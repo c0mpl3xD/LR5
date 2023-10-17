@@ -13,19 +13,44 @@ public class Main {
         }
         //Task 3
         Scanner scanner = new Scanner(System.in);
-        double i;
+        double x;
         do {
             System.out.print("Введіть число (введіть 0 для завершення): ");
-            i = scanner.nextDouble();
-            if (i != 0){
-                double roundI = (double)Math.round(i * 1000)/1000;
+            x = scanner.nextDouble();
+            if (x != 0){
+                double roundI = (double)Math.round(x * 1000)/1000;
                 System.out.println("Округлене число: " + roundI);
             }
-        } while (i != 0);
+        } while (x != 0);
         System.out.println("Було введене число 0");
-
-
         //Task 4
+        scanner.nextLine();
+        int totalVowels = 0;
 
+        System.out.println("Введіть 10 рядків:");
+
+        for (int i = 0; i < 10; i++){
+            System.out.print("Рядок " + (i + 1) + ": ");
+            String input = scanner.nextLine();
+
+            int vowelsInString = countVowels(input);
+            System.out.println("Кількість голосних літер у рядку: " + vowelsInString);
+
+            totalVowels += vowelsInString;
+        }
+        System.out.println("Загальна кількість голосних літер у всіх рядках: " + totalVowels);
+    }
+    private static int countVowels(String str) {
+        int count = 0;
+        String vowels = "aeiouyAEIOUYаеёиоуыэюяіїАЕЁИОУЫЭЮЯІЇ";
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (vowels.indexOf(ch) != -1) {
+                count++;
+            }
+        }
+
+        return count;
     }
 }
